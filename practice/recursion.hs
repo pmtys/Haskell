@@ -5,7 +5,7 @@ sum (a:as) =
   a + sum as
   
 --last
-last [a] -> a
+last :: [a] -> a
 last [a] = a
 last (a:as) =
   last as
@@ -33,6 +33,7 @@ concat (a:as) =
   a ++ concat as
   
 --merge
+merge :: [a] -> [a] -> [a]
 merge [] b = b
 merge a [] = a
 merge (a:as) (b:bs) =
@@ -53,6 +54,19 @@ isPrefixOf (a:as) (b:bs) =
   a == b && isPrefixOf as bs
   
 --quick sort
+qsort :: Ord a => [a] -> [a]
 qsort [] = []
 qsort (a:as) =
   qsort [x | x <- as, x <= a] ++ [a] ++ qsort [x | x <- as, a < x]
+  
+--tails os list
+tails :: [a] -> [[a]]
+tails [] = [[]]
+tails as =
+  [as] ++ tails (drop 1 as)
+  
+--inits of list
+
+---
+inits as =
+  [take l as | l <- [0..length as]]
