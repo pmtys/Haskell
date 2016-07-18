@@ -59,13 +59,14 @@ qsort [] = []
 qsort (a:as) =
   qsort [x | x <- as, x <= a] ++ [a] ++ qsort [x | x <- as, a < x]
   
---tails os list
+--tails of a list
 tails :: [a] -> [[a]]
 tails [] = [[]]
 tails as =
   [as] ++ tails (drop 1 as)
   
---inits of list
+--all prefixes of a list
+inits :: [a] -> [[a]]
 
 ---
 inits as =
